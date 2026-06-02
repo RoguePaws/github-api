@@ -1402,5 +1402,14 @@
   },
   {
     "name": "org.kohsuke.github.GitHubBridgeAdapterObject"
+  },
+  {
+    "name": "org.kohsuke.github.GHSponsorsTier"
+  },
+  {
+    "name": "org.kohsuke.github.GHSponsorship"
+  },
+  {
+    "name": "org.kohsuke.github.GHSponsorship$PrivacyLevel"
   }
 ]

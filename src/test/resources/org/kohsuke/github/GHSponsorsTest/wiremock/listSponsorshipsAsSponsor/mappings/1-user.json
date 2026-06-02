@@ -1,0 +1,28 @@
+{
+  "id": "a6000001-0001-0001-0001-000000000001",
+  "name": "users_sponsor-test-user",
+  "request": {
+    "url": "/users/sponsor-test-user",
+    "method": "GET",
+    "headers": {
+      "Accept": {
+        "equalTo": "application/vnd.github+json"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "1-user.json",
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "X-RateLimit-Limit": "5000",
+      "X-RateLimit-Remaining": "4999",
+      "X-RateLimit-Reset": "1700000000",
+      "X-RateLimit-Used": "1",
+      "X-RateLimit-Resource": "core"
+    }
+  },
+  "uuid": "a6000001-0001-0001-0001-000000000001",
+  "persistent": true,
+  "insertionIndex": 1
+}

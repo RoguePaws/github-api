@@ -8,6 +8,7 @@ import java.net.URL;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
@@ -280,6 +281,18 @@ public abstract class GHPerson extends GHObject {
     }
 
     /**
+     * Checks if this user or organization has a GitHub Sponsors listing.
+     *
+     * @return true if there is a sponsors listing
+     * @throws IOException
+     *             the io exception
+     */
+    @BetaApi
+    public boolean hasSponsorsListing() throws IOException {
+        return GHSponsors.hasSponsorsListing(this);
+    }
+
+    /**
      * Gets the siteAdmin field.
      *
      * @return the siteAdmin field
@@ -289,6 +302,34 @@ public abstract class GHPerson extends GHObject {
     public boolean isSiteAdmin() throws IOException {
         populate();
         return siteAdmin;
+    }
+
+    /**
+     * Checks if the given account is currently sponsoring this user or organization.
+     *
+     * @param sponsorLogin
+     *            the login of the potential sponsor
+     * @return true if the account has an active sponsorship of this user or organization
+     * @throws IOException
+     *             the io exception
+     */
+    @BetaApi
+    public boolean isSponsoredBy(String sponsorLogin) throws IOException {
+        return GHSponsors.isSponsoredBy(this, sponsorLogin);
+    }
+
+    /**
+     * Checks if this user or organization currently sponsors the given account.
+     *
+     * @param sponsorableLogin
+     *            the login of the user or organization that may be sponsored
+     * @return true if this user or organization has an active sponsorship of the account
+     * @throws IOException
+     *             the io exception
+     */
+    @BetaApi
+    public boolean isSponsoring(String sponsorableLogin) throws IOException {
+        return GHSponsors.isSponsoring(this, sponsorableLogin);
     }
 
     /**
@@ -326,6 +367,63 @@ public abstract class GHPerson extends GHObject {
     @Deprecated
     public PagedIterable<GHRepository> listRepositories(final int pageSize) {
         return listRepositories().withPageSize(pageSize);
+    }
+
+    /**
+     * Lists the active, public sponsorships this user or organization receives.
+     *
+     * @return an unmodifiable list of active public sponsorships received
+     * @throws IOException
+     *             the io exception
+     */
+    @BetaApi
+    public List<GHSponsorship> listSponsorshipsAsMaintainer() throws IOException {
+        return listSponsorshipsAsMaintainer(true, false);
+    }
+
+    /**
+     * Lists the sponsorships this user or organization receives.
+     *
+     * @param activeOnly
+     *            if true, only active sponsorships; if false, cancelled sponsorships are included
+     * @param includePrivate
+     *            if true, private sponsorships are included. Their sponsor is only revealed to the maintainer or an
+     *            admin of the organization; GitHub App installation tokens cannot read them at all and the request
+     *            fails with "Resource not accessible by integration"
+     * @return an unmodifiable list of sponsorships received
+     * @throws IOException
+     *             the io exception
+     */
+    @BetaApi
+    public List<GHSponsorship> listSponsorshipsAsMaintainer(boolean activeOnly, boolean includePrivate)
+            throws IOException {
+        return GHSponsors.listSponsorshipsAsMaintainer(this, activeOnly, includePrivate);
+    }
+
+    /**
+     * Lists the active sponsorships this user or organization gives.
+     *
+     * @return an unmodifiable list of active sponsorships given
+     * @throws IOException
+     *             the io exception
+     */
+    @BetaApi
+    public List<GHSponsorship> listSponsorshipsAsSponsor() throws IOException {
+        return listSponsorshipsAsSponsor(true);
+    }
+
+    /**
+     * Lists the sponsorships this user or organization gives.
+     *
+     * @param activeOnly
+     *            if true, only active sponsorships; if false, cancelled sponsorships are included
+     * @return an unmodifiable list of sponsorships given
+     * @throws IOException
+     *             the io exception
+     */
+    @BetaApi
+    public List<GHSponsorship> listSponsorshipsAsSponsor(boolean activeOnly) throws IOException {
+        return GHSponsors.listSponsorshipsAsSponsor(this, activeOnly);
     }
 
     /**

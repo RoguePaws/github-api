@@ -102,6 +102,8 @@ class Requester extends GitHubRequest.Builder<Requester> {
      * @param type
      *            the type
      * @return an instance of {@code GHGraphQLResponse<T>}
+     * @throws GHGraphQLException
+     *             if GitHub answered with GraphQL errors.
      * @throws IOException
      *             if the server returns 4xx/5xx responses.
      */
@@ -109,7 +111,7 @@ class Requester extends GitHubRequest.Builder<Requester> {
         T response = fetch(type);
 
         if (!response.isSuccessful()) {
-            throw new IOException("GraphQL request failed by:" + response.getErrorMessages());
+            throw new GHGraphQLException(response.getErrorMessages());
         }
 
         return response.getData();
