@@ -1,0 +1,4 @@
+jdk:
+  - openjdk17
+install:
+  - mvn -B clean install -DskipTests -Dspotless.check.skip=true -Dspotbugs.skip=true -Djapicmp.skip=true -Dmaven.javadoc.skip=true
