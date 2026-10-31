@@ -1,0 +1,35 @@
+{
+  "id": "a6000001-0001-0001-0001-000000000002",
+  "name": "graphql",
+  "request": {
+    "url": "/graphql",
+    "method": "POST",
+    "headers": {
+      "Accept": {
+        "equalTo": "application/vnd.github+json"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\"query\":\"{ user(login: \\\"sponsor-test-user\\\") { sponsorshipsAsSponsor(first: 100, activeOnly: true) { pageInfo { hasNextPage endCursor } nodes { sponsorEntity { ... on User { login } ... on Organization { login } } sponsorable { ... on User { login } ... on Organization { login } } tier { id name description monthlyPriceInDollars monthlyPriceInCents isOneTime isCustomAmount } isActive isOneTimePayment privacyLevel createdAt } } } }\"}",
+        "ignoreArrayOrder": true,
+        "ignoreExtraElements": false
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "body": "{\"data\":{\"user\":{\"sponsorshipsAsSponsor\":{\"pageInfo\":{\"hasNextPage\":false,\"endCursor\":\"Y3Vyc29yOnYyOpHOAAAAAQ==\"},\"nodes\":[{\"sponsorEntity\":{\"login\":\"sponsor-test-user\"},\"sponsorable\":{\"login\":\"beloved-maintainer\"},\"tier\":{\"id\":\"ST_kwDOAAAAAc4AAAAJ\",\"name\":\"$5 a month\",\"description\":\"Bronze level\",\"monthlyPriceInDollars\":5,\"monthlyPriceInCents\":500,\"isOneTime\":false,\"isCustomAmount\":false},\"isActive\":true,\"isOneTimePayment\":false,\"privacyLevel\":\"PUBLIC\",\"createdAt\":\"2025-09-14T10:20:30Z\"},{\"sponsorEntity\":{\"login\":\"sponsor-test-user\"},\"sponsorable\":{\"login\":\"sponsor-test-org\"},\"tier\":{\"id\":\"ST_kwDOAAAAAc4AAAAK\",\"name\":\"$25 one time\",\"description\":\"Custom one-time amount\",\"monthlyPriceInDollars\":25,\"monthlyPriceInCents\":2500,\"isOneTime\":true,\"isCustomAmount\":true},\"isActive\":true,\"isOneTimePayment\":true,\"privacyLevel\":\"PRIVATE\",\"createdAt\":\"2026-03-02T15:45:00Z\"}]}}}}",
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "X-RateLimit-Limit": "5000",
+      "X-RateLimit-Remaining": "4998",
+      "X-RateLimit-Reset": "1700000000",
+      "X-RateLimit-Used": "2",
+      "X-RateLimit-Resource": "graphql"
+    }
+  },
+  "uuid": "a6000001-0001-0001-0001-000000000002",
+  "persistent": true,
+  "insertionIndex": 2
+}

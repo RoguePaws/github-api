@@ -7,6 +7,7 @@ org.kohsuke.github.GHDiscussion$Updater
 org.kohsuke.github.GHException
 org.kohsuke.github.GHFileNotFoundException
 org.kohsuke.github.GHGistUpdater
+org.kohsuke.github.GHGraphQLException
 org.kohsuke.github.GHHooks
 org.kohsuke.github.GHHooks$Context
 org.kohsuke.github.GHHooks$OrgContext
@@ -14,6 +15,7 @@ org.kohsuke.github.GHHooks$RepoContext
 org.kohsuke.github.GHIOException
 org.kohsuke.github.GHPersonSet
 org.kohsuke.github.GHReleaseUpdater
+org.kohsuke.github.GHSponsors
 org.kohsuke.github.GitHub
 org.kohsuke.github.GitHub$DependentAuthorizationProvider
 org.kohsuke.github.GitHub$LoginLoadingUserAuthorizationProvider

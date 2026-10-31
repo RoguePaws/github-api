@@ -1,0 +1,35 @@
+{
+  "id": "a2000001-0001-0001-0001-000000000002",
+  "name": "graphql",
+  "request": {
+    "url": "/graphql",
+    "method": "POST",
+    "headers": {
+      "Accept": {
+        "equalTo": "application/vnd.github+json"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "equalToJson": "{\"query\":\"{ user(login: \\\"sponsor-test-user\\\") { isSponsoredBy(accountLogin: \\\"some-random-user\\\") } }\"}",
+        "ignoreArrayOrder": true,
+        "ignoreExtraElements": false
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "body": "{\"data\":{\"user\":{\"isSponsoredBy\":false}}}",
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "X-RateLimit-Limit": "5000",
+      "X-RateLimit-Remaining": "4998",
+      "X-RateLimit-Reset": "1700000000",
+      "X-RateLimit-Used": "2",
+      "X-RateLimit-Resource": "graphql"
+    }
+  },
+  "uuid": "a2000001-0001-0001-0001-000000000002",
+  "persistent": true,
+  "insertionIndex": 2
+}
