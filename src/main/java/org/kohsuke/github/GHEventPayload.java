@@ -1121,6 +1121,8 @@ public abstract class GHEventPayload extends GitHubInteractiveObject {
     @SuppressFBWarnings(value = { "NP_UNWRITTEN_FIELD" }, justification = "JSON API")
     public static class PullRequest extends GHEventPayload {
 
+        private String after;
+        private String before;
         private GHPullRequestChanges changes;
 
         private GHLabel label;
@@ -1130,6 +1132,24 @@ public abstract class GHEventPayload extends GitHubInteractiveObject {
          * Create default PullRequest instance
          */
         public PullRequest() {
+        }
+
+        /**
+         * The SHA of the head commit after the push, for action="synchronize".
+         *
+         * @return the after
+         */
+        public String getAfter() {
+            return after;
+        }
+
+        /**
+         * The SHA of the head commit before the push, for action="synchronize".
+         *
+         * @return the before
+         */
+        public String getBefore() {
+            return before;
         }
 
         /**
