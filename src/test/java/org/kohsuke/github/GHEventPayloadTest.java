@@ -717,6 +717,7 @@ public class GHEventPayloadTest extends AbstractGitHubWireMockTest {
         assertThat(event.getIssue().getState(), is(GHIssueState.OPEN));
         assertThat(event.getIssue().getLabels().size(), is(1));
         assertThat(event.getIssue().getLabels().iterator().next().getName(), is("bug"));
+        assertThat(event.getIssue().getPerformedViaGithubApp().getSlug(), is("octoapp"));
         assertThat(event.getRepository().getName(), is("public-repo"));
         assertThat(event.getRepository().getOwner().getLogin(), is("baxterthehacker"));
         assertThat(event.getSender().getLogin(), is("baxterthehacker"));

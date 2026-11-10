@@ -149,6 +149,9 @@ public class GHIssue extends GHObject implements Reactable {
     /** The number. */
     protected int number;
 
+    /** The GitHub App that opened the issue on behalf of a user. */
+    protected GHApp performedViaGithubApp;
+
     /** The pull request. */
     protected GHIssue.PullRequest pullRequest;
 
@@ -461,6 +464,16 @@ public class GHIssue extends GHObject implements Reactable {
      */
     public int getNumber() {
         return number;
+    }
+
+    /**
+     * Gets the GitHub App that opened this issue on behalf of a user.
+     *
+     * @return the GitHub App, or null if the issue was not opened through one
+     */
+    @SuppressFBWarnings(value = { "EI_EXPOSE_REP" }, justification = "Expected behavior")
+    public GHApp getPerformedViaGithubApp() {
+        return performedViaGithubApp;
     }
 
     /**
