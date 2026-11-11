@@ -601,7 +601,7 @@ public class GHIssue extends GHObject implements Reactable {
      *             the io exception
      */
     public void lock() throws IOException {
-        root().createRequest().method("PUT").withUrlPath(getApiRoute() + "/lock").send();
+        root().createRequest().method("PUT").withUrlPath(getIssuesApiRoute() + "/lock").send();
     }
 
     /**
@@ -804,7 +804,7 @@ public class GHIssue extends GHObject implements Reactable {
      *             the io exception
      */
     public void unlock() throws IOException {
-        root().createRequest().method("DELETE").withUrlPath(getApiRoute() + "/lock").send();
+        root().createRequest().method("DELETE").withUrlPath(getIssuesApiRoute() + "/lock").send();
     }
 
     private List<GHLabel> _addLabels(Collection<String> names) throws IOException {
